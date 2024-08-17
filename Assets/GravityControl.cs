@@ -9,39 +9,65 @@ public class GravityControl : MonoBehaviour
     //enum GravityDirection { Down, Left, Up, Right };
     //GravityDirection m_GravityDirection;
 
-    private Vector2 _gravityVector;
+    public GameObject snowglobe;
+
+    private Vector2 gravityVector;
     private Vector2 originalVector;
     private Vector2 rotatedVector;
     private float angleInRadians;
     private Rigidbody2D rigid;
+    private bool isRotating;
+    private float startMousePosition;
 
     void Start()
     {
-        _gravityVector = Physics2D.gravity;
-        originalVector = _gravityVector;
+        isRotating = false;
+        gravityVector = Physics2D.gravity;
+        originalVector = gravityVector;
         rotatedVector = originalVector;
     }
 
     void Update()
     {
+        snowglobe.transform.up = -Physics2D.gravity.normalized;
+
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Physics2D.gravity = new Vector2(0, -9.8f);
         }
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            float h = Input.mousePosition.x - Screen.width / 2;
-            float v = Input.mousePosition.y - Screen.height / 2;
-            Vector2 dir = new Vector2(h, v);
-            dir.Normalize();
-            dir *= _gravityVector.magnitude;
-
-            originalVector = dir;
-            Physics2D.gravity = originalVector;
+            isRotating = true;
+            startMousePosition = Input.mousePosition.x;
         }
-        
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            isRotating = false;
+        }
+
+        if (isRotating)
+        {
+            float currentMousePosition = Input.mousePosition.x;
+            float mouseRelative = currentMousePosition - startMousePosition;
+
+            snowglobe.transform.Rotate(0, 0, -(mouseRelative * 0.5f));
+
+            Vector2 newGravityDirection = snowglobe.transform.up * -Physics2D.gravity.magnitude;
+            Physics2D.gravity = newGravityDirection;
+
+            startMousePosition = currentMousePosition;
+
+            //float h = Input.mousePosition.x - Screen.width / 2;
+            //float v = Input.mousePosition.y - Screen.height / 2;
+            //Vector2 dir = new Vector2(h, v);
+            //dir.Normalize();
+            //dir *= gravityVector.magnitude;
+
+            //originalVector = dir;
+            //Physics2D.gravity = originalVector;
+        }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
