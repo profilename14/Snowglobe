@@ -4,7 +4,11 @@ using System.Collections;
 public class PlayerScript : MonoBehaviour {
 
 
-	public float forcetoAdd=100;
+	//public float forcetoAdd=100;
+	private Rigidbody2D rigid;
+	[SerializeField] private float walkSpeed = 1;
+	[SerializeField] private float jumpPower = 1;
+
 
 
 
@@ -12,17 +16,23 @@ public class PlayerScript : MonoBehaviour {
 
 	void Start () {
 		//gives it force
-		GetComponent<Rigidbody2D> ().velocity = Vector2.up * 10;
+		rigid = GetComponent<Rigidbody2D>();
+
+		rigid.velocity = Vector2.up * 10;
 
 	}
 
 
 	void Update () {
 
-		if (Input.GetKey (KeyCode.A))  
-			GetComponent<Rigidbody2D> ().AddForce(-Vector2.right*forcetoAdd);
+		float walkDirection = Input.GetAxis("Horizontal");
+		float jump = Input.GetAxis("Vertical");
+		Vector2 movement = new Vector2(walkDirection, jump);
 
-		if (Input.GetKey (KeyCode.D))  
-			GetComponent<Rigidbody2D> ().AddForce(Vector2.right*forcetoAdd);
-	}			
+		Move(movement);
+	}
+
+	void Move (Vector2 movement) {
+		rigid.velocity = new Vector2(movement.x * walkSpeed, movement.y * jumpPower);
+	}
 }
