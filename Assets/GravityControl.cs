@@ -25,12 +25,12 @@ public class GravityControl : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Physics2D.gravity = new Vector2(0, -9.8f);
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             float h = Input.mousePosition.x - Screen.width / 2;
             float v = Input.mousePosition.y - Screen.height / 2;

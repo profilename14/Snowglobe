@@ -14,31 +14,37 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // Make player always face the direction of gravity
         transform.up = -Physics2D.gravity.normalized;
 
+        // Moving the actual movement to FixedUpdate would be good for optimization later
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Vector2.right * (Time.deltaTime * speed), Space.Self);
+            GetComponent<Rigidbody2D>().AddForce(transform.right * speed);
+            
+            //transform.Translate(Vector2.right * (Time.deltaTime * speed), Space.Self);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(Vector2.left * (Time.deltaTime * speed), Space.Self);
+            GetComponent<Rigidbody2D>().AddForce(-transform.right * speed);
+
+            //transform.Translate(Vector2.left * (Time.deltaTime * speed), Space.Self);
         }
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            rb.velocity = transform.up * jumpingPower;
         }
 
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        if (Input.GetButtonUp("Jump") && Vector2.Dot(rb.velocity, transform.up) > 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            rb.velocity = rb.velocity * 0.5f;
         }
 
-        Flip();
+        //Flip();
     }
 
     private void FixedUpdate()
@@ -53,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Flip()
     {
+        // I am keeping this because it might be useful for sprite reasons, but currently it does nothing
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
             isFacingRight = !isFacingRight;
