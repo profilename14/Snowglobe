@@ -6,12 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
     private float speed = 8f;
-    private float jumpingPower = 12f;
+    private float jumpingPower = 16f;
     private bool isFacingRight = true;
 
     
-    public float fallMultiplier = 2.5f; // Multiplier to the gravity the player deals with after hitting the peak of their jump
-    public float lowJumpMultiplier = 2f; // If the player doesn't hold jump, multiplier to the extra gravity during before the peak.
+    public float fallMultiplier = 3f; // Multiplier to the gravity the player deals with after hitting the peak of their jump
+    public float lowJumpMultiplier = 8f; // If the player doesn't hold jump, multiplier to the extra gravity during before the peak.
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;

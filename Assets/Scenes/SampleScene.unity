@@ -6149,8 +6149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc20fac03bc2874b934b874d5e8cd4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
+  fallMultiplier: 3
+  lowJumpMultiplier: 8
   rb: {fileID: 1177241243}
   groundCheck: {fileID: 1637466873}
   groundLayer:
