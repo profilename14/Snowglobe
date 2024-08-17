@@ -21,7 +21,7 @@ public class throwhook : MonoBehaviour {
 	
 
 
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButtonDown (1)) {
 
 
 			if (ropeActive == false) {
