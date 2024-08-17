@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class throwhook : MonoBehaviour {
 
 
 	public GameObject hook;
+	public GameObject Player;
+	public GameObject[] allPitons;
+	public float pitonRange = 5;
+
 
 
 	public bool ropeActive;
@@ -13,19 +17,30 @@ public class throwhook : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+	allPitons = GameObject.FindGameObjectsWithTag("Piton");	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
+
+		if (Input.GetKeyDown ("e")) {
+			GameObject nearestPiton = allPitons[0];
+			float distanceToNearest = Vector3.Distance(Player.transform.position, nearestPiton.transform.position);
+
+			for (int i = 1; i < allPitons.Length; i++) {
+			float distanceToCurrent = Vector3.Distance(Player.transform.position, allPitons[i].transform.position);
+			
+			if (distanceToCurrent < distanceToNearest) {
+				nearestPiton = allPitons[i];
+				distanceToNearest = distanceToCurrent;
+			}
+		
+		}
 
 
-		if (Input.GetMouseButtonDown (1)) {
-
-
-			if (ropeActive == false) {
-				Vector2 destiny = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+			if (ropeActive == false && distanceToNearest < pitonRange) {
+				Vector2 destiny = nearestPiton.transform.position;
 
 
 				curHook = (GameObject)Instantiate (hook, transform.position, Quaternion.identity);

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,17 +7,17 @@ public class RopeScript : MonoBehaviour {
 
 	public Vector2 destiny;
 
-	public float speed= 1;
+	public float speed = 2;
 
+	public float length = 5;
 
-	public float distance = 2;
+	public float distance = 1;
 
 	public GameObject nodePrefab;
 
 	public GameObject player;
 
 	public GameObject lastNode;
-
 
 	public LineRenderer lr;
 
@@ -29,8 +29,7 @@ public class RopeScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
-
+		
 		lr = GetComponent<LineRenderer> ();
 
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -54,7 +53,7 @@ public class RopeScript : MonoBehaviour {
 
 		if ((Vector2)transform.position != destiny) {
 
-			if (Vector2.Distance (player.transform.position, lastNode.transform.position) > distance) {
+			if (/*Vector2.Distance (player.transform.position, lastNode.transform.position) > distance && */vertexCount < length) {
 
 
 				CreateNode ();
@@ -68,7 +67,7 @@ public class RopeScript : MonoBehaviour {
 
 
 
-			while(Vector2.Distance (player.transform.position, lastNode.transform.position) > distance)
+			while(/*Vector2.Distance (player.transform.position, lastNode.transform.position) > distance && */vertexCount < length)
 			{
 				CreateNode ();
 			}
