@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,6 +14,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        transform.up = -Physics2D.gravity.normalized;
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(Vector2.right * (Time.deltaTime * speed), Space.Self);
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(Vector2.left * (Time.deltaTime * speed), Space.Self);
+        }
+
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -30,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        //rb.velocity = new Vector2((horizontal * speed) + Physics2D.gravity.x, rb.velocity.y);
     }
 
     private bool IsGrounded()
