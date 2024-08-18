@@ -307,8 +307,8 @@ GameObject:
   - component: {fileID: 30434708}
   - component: {fileID: 30434707}
   m_Layer: 6
-  m_Name: Square (20)
-  m_TagString: Untagged
+  m_Name: piton
+  m_TagString: Piton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -342,7 +342,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1123,8 +1123,8 @@ GameObject:
   - component: {fileID: 207734238}
   - component: {fileID: 207734237}
   m_Layer: 6
-  m_Name: Square (28)
-  m_TagString: Untagged
+  m_Name: piton
+  m_TagString: Piton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11099,8 +11099,8 @@ GameObject:
   - component: {fileID: 361735345}
   - component: {fileID: 361735344}
   m_Layer: 6
-  m_Name: Square (19)
-  m_TagString: Untagged
+  m_Name: piton
+  m_TagString: Piton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11134,7 +11134,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -12039,8 +12039,8 @@ GameObject:
   - component: {fileID: 617578248}
   - component: {fileID: 617578247}
   m_Layer: 6
-  m_Name: Square (17)
-  m_TagString: Untagged
+  m_Name: piton
+  m_TagString: Piton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12279,8 +12279,8 @@ GameObject:
   - component: {fileID: 661530532}
   - component: {fileID: 661530531}
   m_Layer: 6
-  m_Name: Square (29)
-  m_TagString: Untagged
+  m_Name: piton
+  m_TagString: Piton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13013,8 +13013,8 @@ GameObject:
   - component: {fileID: 988973910}
   - component: {fileID: 988973909}
   m_Layer: 6
-  m_Name: Square (18)
-  m_TagString: Untagged
+  m_Name: piton
+  m_TagString: Piton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13364,6 +13364,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hook: {fileID: 1000012688847204, guid: ddbf897f9a3f2a04c82360e94d84e7d1, type: 3}
+  Player: {fileID: 1177241242}
+  allPitons:
+  - {fileID: 617578246}
+  - {fileID: 988973908}
+  - {fileID: 207734236}
+  - {fileID: 661530530}
+  - {fileID: 1837383478}
+  - {fileID: 361735343}
+  - {fileID: 30434706}
+  - {fileID: 1669597326}
+  pitonRange: 7.5
   ropeActive: 0
 --- !u!1 &1266389480
 GameObject:
@@ -19610,8 +19621,8 @@ GameObject:
   - component: {fileID: 1669597328}
   - component: {fileID: 1669597327}
   m_Layer: 6
-  m_Name: Square (21)
-  m_TagString: Untagged
+  m_Name: piton
+  m_TagString: Piton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19645,7 +19656,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -19926,8 +19937,8 @@ GameObject:
   - component: {fileID: 1837383480}
   - component: {fileID: 1837383479}
   m_Layer: 6
-  m_Name: Square (33)
-  m_TagString: Untagged
+  m_Name: piton
+  m_TagString: Piton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
