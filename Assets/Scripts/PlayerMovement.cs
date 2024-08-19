@@ -3,31 +3,72 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private AnimationScript anim;
-    public Rigidbody2D rb { get; private set; }
 
+
+    [Space]
+    [Header("Stats")]
     public float speed = 8f;
     public float jumpForce = 16f;
     public float runMaxSpeed = 10f;
-    
-    private Vector2 orientationNormal;
+
+    public bool canMove;
+    public int facing = 1;
+
+    [Space]
+    [Header("VFX")]
+    public ParticleSystem jumpParticle;
+
 
     
+    private Vector2 orientationNormal;
+    private Collision coll;
+    private Rigidbody2D rb;
+    private AnimationScript anim;
+    private bool groundTouch;
+
+
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
     private void Awake()
     {
+        coll =  GetComponent<Collision>();
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<AnimationScript>();
+        anim = GetComponentInChildren<AnimationScript>();
     }    
 
     void Update()
     {
-        // Make player always face the direction of gravity
+        // Make player always rotate based on the direction of gravity
         transform.up = -Physics2D.gravity.normalized;
 
         Move();
+
+        if (coll.onGround && !groundTouch)
+        {
+            GroundTouch();
+            groundTouch = true;
+        }
+
+        if (!coll.onGround && groundTouch)
+        {
+            groundTouch = false;
+        }
+
+        // Change the direction the sprite is facing
+        float x = Input.GetAxis("Horizontal");
+
+        if (x > 0)
+        {
+            facing = 1;
+            anim.Flip(facing);
+        }
+        if (x < 0)
+        {
+            facing = -1;
+            anim.Flip(facing);
+        }
+
     }
 
     private void Move()
@@ -38,6 +79,8 @@ public class PlayerMovement : MonoBehaviour
         // Take in input data and adjust it based on the player's local space
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
         Vector2 localMoveDirection = transform.TransformDirection(moveInput);
+
+        
 
         // Calculate target velocity based on input and speed
         Vector2 targetVelocity = localMoveDirection * speed;
@@ -54,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
         // Jump Handling
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
+            jumpParticle.Play();
             anim.SetTrigger("jump");
             newVelocity += (-orientationNormal) * jumpForce;
         }
@@ -66,10 +110,26 @@ public class PlayerMovement : MonoBehaviour
 
         // Set the Rigidbody's velocity to the calculated velocity
         rb.velocity = newVelocity;
+
+        anim.SetHorizontalMovement(moveInput.x, moveInput.y, rb.velocity.y);
+    }
+
+    private void Jump()
+    {
+
     }
 
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    void GroundTouch()
+    {
+        // Runs on the initial frame when player touches the ground
+
+        facing = anim.sr.flipX ? -1 : 1;
+
+        jumpParticle.Play();
     }
 }

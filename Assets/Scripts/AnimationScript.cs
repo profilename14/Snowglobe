@@ -21,9 +21,8 @@ public class AnimationScript : MonoBehaviour
 
     void Update()
     {
-        //anim.SetBool("onGround", coll.onGround);
-        //anim.SetBool("canMove", move.canMove);
-
+        anim.SetBool("onGround", coll.onGround);
+        anim.SetBool("canMove", move.canMove);
     }
 
     public void SetHorizontalMovement(float x,float y, float yVel)
