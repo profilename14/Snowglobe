@@ -1,86 +1,75 @@
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float horizontal;
-    private float speed = 3f;
-    private float jumpingPower = 26f;
-    private bool isFacingRight = true;
+    private AnimationScript anim;
+    public Rigidbody2D rb { get; private set; }
+
+    public float speed = 8f;
+    public float jumpForce = 16f;
+    public float runMaxSpeed = 10f;
+    
+    private Vector2 orientationNormal;
 
     
-    public float fallMultiplier = 3f; // Multiplier to the gravity the player deals with after hitting the peak of their jump
-    public float lowJumpMultiplier = 8f; // If the player doesn't hold jump, multiplier to the extra gravity during before the peak.
-
-    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<AnimationScript>();
+    }    
 
     void Update()
     {
         // Make player always face the direction of gravity
         transform.up = -Physics2D.gravity.normalized;
 
-
-        horizontal = Input.GetAxis("Horizontal");
-
-        Vector2 movement = transform.right * horizontal;
-        Move(movement);
-
-
-
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = Vector2.zero;
-            rb.velocity += Vector2.up * jumpingPower;
-        }
-
-        JumpControl(Vector2.Dot(rb.velocity, transform.up), Input.GetButton("Jump")); // Modifies jumps based on if the button is held or not. Handles gravity!
-
-        /*if (Input.GetButtonUp("Jump") && Vector2.Dot(rb.velocity, transform.up) > 0)
-        {
-            rb.velocity = rb.velocity * 0.5f;
-        }*/
-
-        //Flip();
+        Move();
     }
 
-    private void FixedUpdate()
+    private void Move()
     {
-        //rb.velocity = new Vector2((horizontal * speed) + Physics2D.gravity.x, rb.velocity.y);
+        // Normalize the current gravity direction
+        orientationNormal = Physics2D.gravity.normalized;
+
+        // Take in input data and adjust it based on the player's local space
+        Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
+        Vector2 localMoveDirection = transform.TransformDirection(moveInput);
+
+        // Calculate target velocity based on input and speed
+        Vector2 targetVelocity = localMoveDirection * speed;
+
+        // Project the current velocity onto the surface perpendicular to gravity (movement plane)
+        Vector2 velocityOnMovePlane = rb.velocity - Vector2.Dot(rb.velocity, orientationNormal) * orientationNormal;
+
+        // This should not have been as hard as it was to figure out fml
+        Vector2 newVelocity = Vector2.Lerp(velocityOnMovePlane, targetVelocity, 0.2f); // Adjust Lerp factor as needed
+
+        // Add gravity component *back* to the velocity
+        newVelocity += Vector2.Dot(rb.velocity, orientationNormal) * orientationNormal;
+
+        // Jump Handling
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            anim.SetTrigger("jump");
+            newVelocity += (-orientationNormal) * jumpForce;
+        }
+
+        // Variable jump height handling
+        if (Input.GetButtonUp("Jump") && Vector2.Dot(rb.velocity, -orientationNormal) > 0)
+        {
+            newVelocity += orientationNormal * rb.velocity.magnitude * 0.5f;
+        }
+
+        // Set the Rigidbody's velocity to the calculated velocity
+        rb.velocity = newVelocity;
     }
 
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-    }
-
-    private void Flip()
-    {
-        // I am keeping this because it might be useful for sprite reasons, but currently it does nothing
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
-        {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
-        }
-    }
-
-    private void Move(Vector2 movement) {
-        //rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(dir.x * speed, rb.velocity.y), wallJumpLerp * Time.deltaTime);
-		rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
-
-    }
-
-    private void JumpControl(float verticalVelocity, bool isJumpHeld) {
-        if(verticalVelocity < 0) // If the player is falling
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }else if(verticalVelocity > 0 && !isJumpHeld) // If the player is rising but isn't holding jump
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        }
     }
 }

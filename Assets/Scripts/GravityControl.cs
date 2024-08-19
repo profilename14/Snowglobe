@@ -15,7 +15,6 @@ public class GravityControl : MonoBehaviour
     private Vector2 originalVector;
     private Vector2 rotatedVector;
     private float angleInRadians;
-    private Rigidbody2D rigid;
     private bool isRotating;
     private float startMousePosition;
 
@@ -43,11 +42,14 @@ public class GravityControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            
+            Time.timeScale = 0.0f;
             isRotating = true;
             startMousePosition = Input.mousePosition.x;
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
+            Time.timeScale = 1.0f;
             isRotating = false;
         }
 
@@ -62,15 +64,6 @@ public class GravityControl : MonoBehaviour
             Physics2D.gravity = newGravityDirection;
 
             startMousePosition = currentMousePosition;
-
-            //float h = Input.mousePosition.x - Screen.width / 2;
-            //float v = Input.mousePosition.y - Screen.height / 2;
-            //Vector2 dir = new Vector2(h, v);
-            //dir.Normalize();
-            //dir *= gravityVector.magnitude;
-
-            //originalVector = dir;
-            //Physics2D.gravity = originalVector;
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))

@@ -17,7 +17,7 @@ public class throwhook : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	allPitons = GameObject.FindGameObjectsWithTag("Piton");	
+		allPitons = GameObject.FindGameObjectsWithTag("Piton");	
 	}
 	
 	// Update is called once per frame

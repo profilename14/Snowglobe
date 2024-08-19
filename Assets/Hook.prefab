@@ -86,7 +86,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &50000011407619950
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destiny: {x: 0, y: 0}
   speed: 5
-  distance: 1
+  distance: 0.5
   nodePrefab: {fileID: 1000014215547198, guid: a02635807ba30044b8200e489d8cbdb9, type: 3}
   player: {fileID: 0}
   lastNode: {fileID: 0}
