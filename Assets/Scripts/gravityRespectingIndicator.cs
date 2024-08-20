@@ -10,12 +10,13 @@ public class gravityRespectingIndicator : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
+        transform.up = Physics2D.gravity.normalized;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         //transform.position = startPosition - (Physics2D.gravity.normalized * distanceFromOrigin);
-        //transform.up = -Physics2D.gravity.normalized;
     }
 }
