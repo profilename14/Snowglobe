@@ -5089,6 +5089,7 @@ GameObject:
   - component: {fileID: 7384934172788384284}
   - component: {fileID: 7362980475715177461}
   - component: {fileID: 6749002618104577716}
+  - component: {fileID: 1572743934222088083}
   m_Layer: 7
   m_Name: Visual/Audio
   m_TagString: Untagged
@@ -5327,6 +5328,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1572743934222088083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920557615393504607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655e68487ac40204da081f1529826881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hookThrowScript: {fileID: 2421519397689252875}
+  anim: {fileID: 7384934172788384284}
 --- !u!1 &7151985827239121839
 GameObject:
   m_ObjectHideFlags: 0
@@ -5494,6 +5509,7 @@ MonoBehaviour:
   MaxCorrectionSpeed: 40
   gravCorrectionDist: 10
   gravMoveMultiplier: 1
+  isRotating: 0
 --- !u!114 &2421519397689252875
 MonoBehaviour:
   m_ObjectHideFlags: 0
