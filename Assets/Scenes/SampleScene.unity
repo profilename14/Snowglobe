@@ -12245,8 +12245,8 @@ GameObject:
   - component: {fileID: 617578248}
   - component: {fileID: 617578247}
   m_Layer: 6
-  m_Name: piton
-  m_TagString: Piton
+  m_Name: Square
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25206,6 +25206,10 @@ PrefabInstance:
     - target: {fileID: 1591873202337175817, guid: 475353fdb14ff014ca559a2e7b66fc7a, type: 3}
       propertyPath: m_Name
       value: Piton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738758154480014742, guid: 475353fdb14ff014ca559a2e7b66fc7a, type: 3}
+      propertyPath: minimumDistance
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8259686176285655537, guid: 475353fdb14ff014ca559a2e7b66fc7a, type: 3}
       propertyPath: m_LocalPosition.x
