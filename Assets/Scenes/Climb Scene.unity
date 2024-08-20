@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 1266430983278166789, guid: 475353fdb14ff014ca559a2e7b66fc7a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1591873202337175817, guid: 475353fdb14ff014ca559a2e7b66fc7a, type: 3}
       propertyPath: m_Name
       value: Piton
@@ -142,6 +146,10 @@ PrefabInstance:
     - target: {fileID: 1591873202337175817, guid: 475353fdb14ff014ca559a2e7b66fc7a, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755400211025583800, guid: 475353fdb14ff014ca559a2e7b66fc7a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5966471294846995391, guid: 475353fdb14ff014ca559a2e7b66fc7a, type: 3}
       propertyPath: m_Layer
@@ -103922,6 +103930,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1572743934222088083, guid: 19aa7081e00f1454582eb048c5a3226e, type: 3}
+      propertyPath: playerFX
+      value: 
+      objectReference: {fileID: 462271549}
     - target: {fileID: 2451130718718813815, guid: 19aa7081e00f1454582eb048c5a3226e, type: 3}
       propertyPath: musicSource
       value: 

@@ -63,4 +63,17 @@ public class PlayerFX : MonoBehaviour
         SFXsource.Play();
     }
 
+        public void PlayDeath()
+    {
+        footstepVFX.Play();
+
+        AudioClip clip;
+        clip = footstepSFX[Random.Range(0, footstepSFX.Count)];
+
+        SFXsource.clip = clip;
+        SFXsource.volume = Random.Range(0.09f, 0.11f);
+        SFXsource.pitch = Random.Range(1.2f, 1.4f);
+        SFXsource.Play();
+    }
+
 }
