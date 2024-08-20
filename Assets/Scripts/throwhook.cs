@@ -76,7 +76,7 @@ public class throwhook : MonoBehaviour {
 
 			ropeActive = true;
 
-			lastSavePosition = nearestPiton.transform.position;
+			lastSavePosition = nearestPitonScript.location;
 		}
 	}
 

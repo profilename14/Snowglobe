@@ -8,11 +8,15 @@ public class Piton : MonoBehaviour
     [HideInInspector] public bool isActive = false;
 
     public float minimumDistance = 7.5f;
+    public Vector2 location = Vector2.zero;
     public SpriteRenderer signalKey;
     // Start is called before the first frame update
     void Start()
     {
         signalKey.enabled = false;
+        if (location == Vector2.zero) {
+            location = new Vector2 (transform.position.x, transform.position.y);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
