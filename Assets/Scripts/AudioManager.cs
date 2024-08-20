@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -13,6 +14,7 @@ public class AudioManager : MonoBehaviour
     private float normalCutoffFrequency = 22000f;  // Normal cutoff frequency for unmuted audio
     private float muffledCutoffFrequency = 1000f;  // Muffled cutoff frequency for muted audio
 
+    
     private void Awake()
     {
         if (instance == null)
@@ -83,6 +85,20 @@ public class AudioManager : MonoBehaviour
             musicSource.volume = Mathf.Lerp(0, targetVolume, t / duration);
             yield return null;
         }
+    }
+
+    public IEnumerator FadeOutMusic(float musicFadeDuration)
+    {
+        float startVolume = musicSource.volume;
+
+        for (float t = 0; t < musicFadeDuration; t += Time.deltaTime)
+        {
+            musicSource.volume = Mathf.Lerp(startVolume, 0, t / musicFadeDuration);
+            yield return null;
+        }
+
+
+        musicSource.Stop();
     }
 
     // Coroutine to muffle/unmuffle audio

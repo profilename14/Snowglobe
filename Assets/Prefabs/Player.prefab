@@ -5351,13 +5351,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4426752397230225996}
-  - component: {fileID: 1515883515539231523}
   - component: {fileID: 7668650342626268544}
   - component: {fileID: 7150075101044880164}
   - component: {fileID: 9070596850717419374}
   - component: {fileID: 2421519397689252875}
   - component: {fileID: 1132514228739574719}
   - component: {fileID: 2724040453971812586}
+  - component: {fileID: 2409845962880757251}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -5385,28 +5385,6 @@ Transform:
   - {fileID: 8899738498725741421}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1515883515539231523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7151985827239121839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c07ade71e1c10945b199e3878e05bdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 8
-  jumpForce: 24
-  runMaxSpeed: 10
-  canMove: 0
-  facing: 1
-  playerFX: {fileID: 7362980475715177461}
-  groundCheck: {fileID: 6597444816659341680}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!50 &7668650342626268544
 Rigidbody2D:
   serializedVersion: 4
@@ -5647,6 +5625,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2409845962880757251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7151985827239121839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc20fac03bc2874b934b874d5e8cd4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 8
+  jumpForce: 24
+  runMaxSpeed: 10
+  canMove: 0
+  facing: 1
+  playerFX: {fileID: 7362980475715177461}
+  groundCheck: {fileID: 6597444816659341680}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &9035529822536146053
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public string sceneName;
+    public AudioClip mainMenuMusic;
 
     public void changeScene()
     {
 	    SceneManager.LoadScene(sceneName);
+        AudioManager.instance.FadeOutMusic(2f);
     }
 }
