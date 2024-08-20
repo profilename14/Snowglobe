@@ -105,7 +105,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7eb7554ed5430814cb6ee4e05fa14001, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -309,3 +309,4 @@ MonoBehaviour:
   lastNode: {fileID: 0}
   lr: {fileID: 0}
   Nodes: []
+  minimumDistance: 7.5

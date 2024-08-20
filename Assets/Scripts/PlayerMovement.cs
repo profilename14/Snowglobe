@@ -10,8 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 8f;
     public float jumpForce = 16f;
     public float runMaxSpeed = 10f;
-    public AudioClip clip;
-    public AudioClip atmo;
 
     public bool canMove;
     public int facing = 1;
@@ -43,16 +41,6 @@ public class PlayerMovement : MonoBehaviour
         transform.up = -Physics2D.gravity.normalized;
 
         Move();
-
-        // Testing audio
-        if (Input.GetKeyDown(KeyCode.H)) 
-        {
-            AudioManager.instance.PlayMusic(clip);
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            AudioManager.instance.PlayAtmosphere(atmo);
-        }
 
         if (coll.onGround && !groundTouch)
         {

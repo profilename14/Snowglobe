@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5d49e64c57dd20545bee3e0d32a2af08
+guid: 6373a3ea1cdb6de4bb829f3cd3183bf8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -139,19 +139,19 @@ TextureImporter:
       name: gnome_0
       rect:
         serializedVersion: 2
-        x: 16
+        x: 0
         y: 32
         width: 16
-        height: 26
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59e6a5a48ca4f824fae27abcc51f3247
-      internalID: -2138045570
+      spriteID: c1cab634982158e46ab84c113d1a2951
+      internalID: 1863386504
       vertices: []
       indices: 
       edges: []
@@ -160,19 +160,19 @@ TextureImporter:
       name: gnome_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 16
         y: 32
         width: 16
-        height: 26
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c74edaebe2268cc4b898640614086045
-      internalID: 617110396
+      spriteID: 382af018d4997ad4397197854a309d4e
+      internalID: 550556441
       vertices: []
       indices: 
       edges: []
@@ -181,19 +181,19 @@ TextureImporter:
       name: gnome_2
       rect:
         serializedVersion: 2
-        x: 48
+        x: 32
         y: 32
         width: 16
-        height: 26
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2f222f568d12804c8c957572a59cbf3
-      internalID: 1365912132
+      spriteID: 42c37dac33b0b054cbbae4dce02d6db6
+      internalID: 1766350933
       vertices: []
       indices: 
       edges: []
@@ -202,19 +202,19 @@ TextureImporter:
       name: gnome_3
       rect:
         serializedVersion: 2
-        x: 64
+        x: 48
         y: 32
         width: 16
-        height: 26
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9bdf385608bdf348beced708a4fe1b1
-      internalID: 1226410215
+      spriteID: aa6bfd6dbec1d954bbb26ea723c13f69
+      internalID: 1587480836
       vertices: []
       indices: 
       edges: []
@@ -223,19 +223,19 @@ TextureImporter:
       name: gnome_4
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 32
         width: 16
-        height: 26
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bc66dce47f9afd4c808d4782aeb8454
-      internalID: -886143424
+      spriteID: aca77185d13f789499f140f7fca28230
+      internalID: -1762044019
       vertices: []
       indices: 
       edges: []
@@ -244,19 +244,19 @@ TextureImporter:
       name: gnome_5
       rect:
         serializedVersion: 2
-        x: 96
+        x: 80
         y: 32
         width: 16
-        height: 26
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 159aef8e847e45c41ada07be78670cf0
-      internalID: 1229579447
+      spriteID: a672c8c503bf9cc429ca29bda45d66ce
+      internalID: -995130094
       vertices: []
       indices: 
       edges: []
@@ -268,16 +268,16 @@ TextureImporter:
         x: 0
         y: 0
         width: 16
-        height: 26
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 090401d65f202314ca94997e0a0079ba
-      internalID: 1092351177
+      spriteID: 9685f8dedb9f8df449aeb53031026f40
+      internalID: -1251176641
       vertices: []
       indices: 
       edges: []
@@ -289,16 +289,16 @@ TextureImporter:
         x: 16
         y: 0
         width: 16
-        height: 26
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a54421ede9f93e4594d9eb7786af0a7
-      internalID: -963200850
+      spriteID: 189e117ed4d3fd3429638d353b102ccc
+      internalID: -106989799
       vertices: []
       indices: 
       edges: []
@@ -310,100 +310,16 @@ TextureImporter:
         x: 32
         y: 0
         width: 16
-        height: 26
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8aea3f991cf359a488c494ef99d41707
-      internalID: 1704601216
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gnome_9
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b7aa3f3242658c94b9cfa42a4cd01211
-      internalID: 437277744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gnome_10
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9b7bad451287a2e44a1a201cc810282f
-      internalID: 2073216156
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gnome_11
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 16
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d214e1d99430534686a82857933a4c3
-      internalID: 185177629
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gnome_12
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 16
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1055d02b1dc2fc64d92ac26af29df34f
-      internalID: -455413550
+      spriteID: 81d905878570491418d6686d6a59c08f
+      internalID: 1662070731
       vertices: []
       indices: 
       edges: []
@@ -419,19 +335,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      gnome_0: -2138045570
-      gnome_1: 617110396
-      gnome_10: 2073216156
-      gnome_11: 185177629
-      gnome_12: -455413550
-      gnome_2: 1365912132
-      gnome_3: 1226410215
-      gnome_4: -886143424
-      gnome_5: 1229579447
-      gnome_6: 1092351177
-      gnome_7: -963200850
-      gnome_8: 1704601216
-      gnome_9: 437277744
+      gnome_0: 1863386504
+      gnome_1: 550556441
+      gnome_2: 1766350933
+      gnome_3: 1587480836
+      gnome_4: -1762044019
+      gnome_5: -995130094
+      gnome_6: -1251176641
+      gnome_7: -106989799
+      gnome_8: 1662070731
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
