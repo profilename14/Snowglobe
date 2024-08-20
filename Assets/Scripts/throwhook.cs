@@ -59,15 +59,13 @@ public class throwhook : MonoBehaviour {
 			{
 				Destroy(curHook);
 			}
+			
 			Vector2 destiny = nearestPiton.transform.position;
-
 
 			curHook = (GameObject)Instantiate(hook, transform.position, Quaternion.identity);
 
 			curHook.GetComponent<RopeScript>().destiny = destiny;
 			curHook.GetComponent<RopeScript>().minimumDistance = nearestPitonScript.minimumDistance;
-
-
 
 			ropeActive = true;
 		}

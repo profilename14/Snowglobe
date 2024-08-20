@@ -34,6 +34,13 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void StopMusic(AudioClip clip, float volume = 1f)
+    {
+        musicSource.clip = clip;
+        musicSource.volume = volume;
+        musicSource.Stop();
+    }
+
     // Change background music
     public void ChangeMusic(AudioClip newClip, float fadeDuration = 1f, float volume = 1f)
     {

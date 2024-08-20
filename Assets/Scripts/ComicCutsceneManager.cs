@@ -79,8 +79,6 @@ public class ComicCutsceneManager : MonoBehaviour
             if (cardToShow == _images.Length && !_hasFinished)
             {
                 _hasFinished = true;
-                if (OnFinishedStack != null)
-                    OnFinishedStack.Invoke();
                 StartCoroutine(FadeOutMusic());
             }
             return;
@@ -140,6 +138,13 @@ public class ComicCutsceneManager : MonoBehaviour
             yield return null;
         }
 
+
         _musicSource.Stop();
+        
+        if (OnFinishedStack != null)
+        {
+            OnFinishedStack.Invoke();
+        }
+
     }
 }
