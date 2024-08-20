@@ -75,6 +75,8 @@ public class PlayerMovement : MonoBehaviour
         orientationNormal = Physics2D.gravity.normalized;
 
         // Take in input data and adjust it based on the player's local space
+	
+	
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
         Vector2 localMoveDirection = transform.TransformDirection(moveInput);
 
@@ -93,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         newVelocity += Vector2.Dot(rb.velocity, orientationNormal) * orientationNormal;
 
         // Jump Handling
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && IsGrounded() && Time.timeScale != 0f)
         {
             playerFX.PlayJump();
             anim.SetTrigger("jump");
