@@ -22,7 +22,9 @@ public class killZone : MonoBehaviour
             //Debug.Log("AAAAAAA");
             //SceneManager.LoadScene("SampleScene");
             GameObject playerVisual = collision.gameObject.GetComponent<PlayerMovement>().playerFX.gameObject;
-            playerVisual.GetComponent<Animator>().SetBool("isDead", true);;
+            collision.gameObject.GetComponent<PlayerMovement>().playerFX.PlayDeath();
+            playerVisual.GetComponent<Animator>().SetBool("isDead", true);
+            
         }
     }
 }
