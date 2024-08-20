@@ -27,6 +27,9 @@ public class RopeScript : MonoBehaviour {
 
 	bool done=false;
 
+	public float minimumDistance = 7.5f;
+	float totalDistance = 0.0f;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -52,17 +55,21 @@ public class RopeScript : MonoBehaviour {
 
 
 
-		if ((Vector2)transform.position != destiny) {
+		if ((Vector2)transform.position != destiny || totalDistance < minimumDistance) {
 
 			if (Vector2.Distance (player.transform.position, lastNode.transform.position) > distance) {
 
 
 				CreateNode ();
 
+			} else if (totalDistance < minimumDistance) {
+
+				CreateNode ();
 			}
 
 
 		} else if (done == false) {
+
 
 			done = true;
 
@@ -106,6 +113,7 @@ public class RopeScript : MonoBehaviour {
 		pos2Create.Normalize ();
 		pos2Create *= distance;
 		pos2Create += (Vector2)lastNode.transform.position;
+		totalDistance += 1;
 
 		GameObject go = (GameObject)	Instantiate (nodePrefab, pos2Create, Quaternion.identity);
 

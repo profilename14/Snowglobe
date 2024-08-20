@@ -38,26 +38,24 @@ public class throwhook : MonoBehaviour {
 		
 		}
 
+			Piton nearestPitonScript = nearestPiton.gameObject.GetComponent<Piton>();
 
-			if (ropeActive == false && distanceToNearest < pitonRange) {
+
+			if (nearestPitonScript.isAdjacent) {
+				if (ropeActive == true) {
+					Destroy (curHook);
+				}
 				Vector2 destiny = nearestPiton.transform.position;
 
 
 				curHook = (GameObject)Instantiate (hook, transform.position, Quaternion.identity);
 
 				curHook.GetComponent<RopeScript> ().destiny = destiny;
+				curHook.GetComponent<RopeScript> ().minimumDistance = nearestPitonScript.minimumDistance;
+
 
 
 				ropeActive = true;
-			} else {
-
-				//delete rope
-
-				Destroy (curHook);
-
-
-				ropeActive = false;
-
 			}
 		}
 

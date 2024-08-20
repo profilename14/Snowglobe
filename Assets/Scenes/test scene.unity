@@ -23228,13 +23228,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 578741160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cc20fac03bc2874b934b874d5e8cd4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c07ade71e1c10945b199e3878e05bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
   jumpForce: 16
   runMaxSpeed: 10
   canMove: 0
+  facing: 1
+  jumpParticle: {fileID: 8684964941612254005, guid: 504a5005f64756c48a40677e02f00ab0, type: 3}
   groundCheck: {fileID: 1101842261}
   groundLayer:
     serializedVersion: 2
@@ -23252,6 +23254,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snowglobe: {fileID: 1609277716}
+  SmoothingCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  MaxCorrectionSpeed: 20
+  gravCorrectionDist: 10
+  playerTransform: {fileID: 578741163}
 --- !u!114 &578741168
 MonoBehaviour:
   m_ObjectHideFlags: 0
