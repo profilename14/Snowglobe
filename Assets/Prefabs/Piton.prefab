@@ -175,6 +175,7 @@ MonoBehaviour:
   isAdjacent: 0
   isActive: 0
   minimumDistance: 12.5
+  location: {x: 0, y: 0}
   signalKey: {fileID: 4755400211025583800}
 --- !u!1 &5966471294846995391
 GameObject:
