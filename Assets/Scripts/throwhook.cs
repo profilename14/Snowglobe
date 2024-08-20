@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class throwhook : MonoBehaviour {
 
@@ -25,42 +26,50 @@ public class throwhook : MonoBehaviour {
 		
 
 		if (Input.GetKeyDown ("e") || Input.GetMouseButtonDown(1)) {
-			GameObject nearestPiton = allPitons[0];
-			float distanceToNearest = Vector3.Distance(Player.transform.position, nearestPiton.transform.position);
+			HookThrow();
+		} else if (ropeActive == false && allPitons.Length > 0) {
+			HookThrow();
+		}
 
-			for (int i = 1; i < allPitons.Length; i++) {
+
+	}
+
+	private void HookThrow() {
+		GameObject nearestPiton = allPitons[0];
+		float distanceToNearest = Vector3.Distance(Player.transform.position, nearestPiton.transform.position);
+
+		for (int i = 1; i < allPitons.Length; i++)
+		{
 			float distanceToCurrent = Vector3.Distance(Player.transform.position, allPitons[i].transform.position);
-			
-			if (distanceToCurrent < distanceToNearest) {
+
+			if (distanceToCurrent < distanceToNearest)
+			{
 				nearestPiton = allPitons[i];
 				distanceToNearest = distanceToCurrent;
 			}
-		
+
 		}
 
-
-			if (ropeActive == false && distanceToNearest < pitonRange) {
-				Vector2 destiny = nearestPiton.transform.position;
+		Piton nearestPitonScript = nearestPiton.gameObject.GetComponent<Piton>();
 
 
-				curHook = (GameObject)Instantiate (hook, transform.position, Quaternion.identity);
-
-				curHook.GetComponent<RopeScript> ().destiny = destiny;
-
-
-				ropeActive = true;
-			} else {
-
-				//delete rope
-
-				Destroy (curHook);
-
-
-				ropeActive = false;
-
+		if (nearestPitonScript.isAdjacent || ropeActive == false)
+		{
+			if (ropeActive == true)
+			{
+				Destroy(curHook);
 			}
+			Vector2 destiny = nearestPiton.transform.position;
+
+
+			curHook = (GameObject)Instantiate(hook, transform.position, Quaternion.identity);
+
+			curHook.GetComponent<RopeScript>().destiny = destiny;
+			curHook.GetComponent<RopeScript>().minimumDistance = nearestPitonScript.minimumDistance;
+
+
+
+			ropeActive = true;
 		}
-
-
 	}
 }
