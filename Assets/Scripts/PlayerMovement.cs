@@ -10,16 +10,16 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 8f;
     public float jumpForce = 16f;
     public float runMaxSpeed = 10f;
+    public AudioClip clip;
+    public AudioClip atmo;
 
     public bool canMove;
     public int facing = 1;
 
     [Space]
     [Header("VFX")]
-    public ParticleSystem jumpParticle;
+    public PlayerFX playerFX;
 
-
-    
     private Vector2 orientationNormal;
     private Collision coll;
     private Rigidbody2D rb;
@@ -43,6 +43,16 @@ public class PlayerMovement : MonoBehaviour
         transform.up = -Physics2D.gravity.normalized;
 
         Move();
+
+        // Testing audio
+        if (Input.GetKeyDown(KeyCode.H)) 
+        {
+            AudioManager.instance.PlayMusic(clip);
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            AudioManager.instance.PlayAtmosphere(atmo);
+        }
 
         if (coll.onGround && !groundTouch)
         {
@@ -97,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
         // Jump Handling
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            jumpParticle.Play();
+            playerFX.PlayJump();
             anim.SetTrigger("jump");
             newVelocity += (-orientationNormal) * jumpForce;
         }
@@ -111,12 +121,12 @@ public class PlayerMovement : MonoBehaviour
         // Set the Rigidbody's velocity to the calculated velocity
         rb.velocity = newVelocity;
 
-        anim.SetHorizontalMovement(moveInput.x, moveInput.y, rb.velocity.y);
-    }
+        // Calculate the velocity relative to gravity
+        Vector2 gravityDirection = Physics2D.gravity.normalized;
+        float relativeVerticalVelocity = Vector2.Dot(rb.velocity, gravityDirection);
 
-    private void Jump()
-    {
-
+        // Pass the relative vertical velocity to the animation script
+        anim.SetHorizontalMovement(moveInput.x, moveInput.y, -relativeVerticalVelocity);
     }
 
     private bool IsGrounded()
@@ -130,6 +140,6 @@ public class PlayerMovement : MonoBehaviour
 
         facing = anim.sr.flipX ? -1 : 1;
 
-        jumpParticle.Play();
+        playerFX.PlayLanding();
     }
 }

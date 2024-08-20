@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Collision : MonoBehaviour
 {
+    // This script is largely unutilized, but I'm keeping it around just in case we decide to add wall jumping later.
+
     [Header("Layers")]
     public LayerMask groundLayer;
     

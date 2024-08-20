@@ -9,11 +9,8 @@ public class GravityControl : MonoBehaviour
     public AnimationCurve SmoothingCurve;
     public float MaxCorrectionSpeed = 20f;
     public float gravCorrectionDist = 10f;
-    public Transform playerTransform;
+    public float gravMoveMultiplier = 1.0f;
 
-    private Vector2 gravityVector;
-    private Vector2 originalVector;
-    private Vector2 rotatedVector;
     private bool isRotating;
     private float startMousePosition;
     private Quaternion targetRotation;
@@ -23,9 +20,6 @@ public class GravityControl : MonoBehaviour
     {
         isRotating = false;
         snapping = false;
-        gravityVector = Physics2D.gravity;
-        originalVector = gravityVector;
-        rotatedVector = originalVector;
     }
 
     void Update()
@@ -52,6 +46,7 @@ public class GravityControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Time.timeScale = 0.0f;
+            AudioManager.instance.MuffleAudio(true);
             isRotating = true;
             snapping = false;
             startMousePosition = Input.mousePosition.x;
@@ -59,6 +54,7 @@ public class GravityControl : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             Time.timeScale = 1.0f;
+            AudioManager.instance.MuffleAudio(false);
             isRotating = false;
             snapping = true;
             StartSnapping();
@@ -69,7 +65,7 @@ public class GravityControl : MonoBehaviour
             float currentMousePosition = Input.mousePosition.x;
             float mouseRelative = currentMousePosition - startMousePosition;
 
-            snowglobe.transform.Rotate(0, 0, -(mouseRelative * 0.5f));
+            snowglobe.transform.Rotate(0, 0, -(mouseRelative * gravMoveMultiplier));
 
             Vector2 newGravityDirection = snowglobe.transform.up * -Physics2D.gravity.magnitude;
             Physics2D.gravity = newGravityDirection;
@@ -101,21 +97,20 @@ public class GravityControl : MonoBehaviour
 
     private void CorrectRotation()
     {
-        float floorDistance = 1f; // Placeholder: Set this to the appropriate value in your context.
 
         // Get the new rotation towards the target angle.
         Quaternion desiredRot = targetRotation;
 
-        // Calculate the smoothing strength using the AnimationCurve and MaxCorrectionSpeed.
-        float strength = Time.unscaledDeltaTime * (MaxCorrectionSpeed * SmoothingCurve.Evaluate(Mathf.Clamp(floorDistance, 0, gravCorrectionDist) / gravCorrectionDist));
+        // Calculate the smoothing strength using the AnimationCurve and MaxCorrectionSpeed
+        float strength = Time.unscaledDeltaTime * (MaxCorrectionSpeed * SmoothingCurve.Evaluate(Mathf.Clamp(1f, 0f, gravCorrectionDist) / gravCorrectionDist));
 
-        // Apply the smoothed rotation using Slerp.
+        // Apply the smoothed rotation using Slerp (shluuurp)
         snowglobe.transform.rotation = Quaternion.Slerp(snowglobe.transform.rotation, desiredRot, strength);
 
         Vector2 newGravityDirection = snowglobe.transform.up * -Physics2D.gravity.magnitude;
         Physics2D.gravity = newGravityDirection;
 
-        // Stop snapping once the rotation is close enough to the target.
+        // Stop snapping once the rotation is close enough to the target
         if (Quaternion.Angle(snowglobe.transform.rotation, targetRotation) < 0.1f)
         {
             snapping = false;
