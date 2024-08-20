@@ -11,7 +11,7 @@ public class GravityControl : MonoBehaviour
     public float gravCorrectionDist = 10f;
     public float gravMoveMultiplier = 1.0f;
 
-    private bool isRotating;
+    public bool isRotating;
     private float startMousePosition;
     private Quaternion targetRotation;
     private bool snapping;
@@ -42,8 +42,8 @@ public class GravityControl : MonoBehaviour
         {
             StartArrowRotation(new Vector2(9.8f, 0));
         }
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+	
+        if (Input.GetKeyDown(KeyCode.Mouse0) && PauseMenu.GameIsPaused == false)
         {
             Time.timeScale = 0.0f;
             AudioManager.instance.MuffleAudio(true);
