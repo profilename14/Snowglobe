@@ -16,6 +16,9 @@ public class throwhook : MonoBehaviour {
 
 	GameObject curHook;
 
+
+	Vector2 lastSavePosition;
+
 	// Use this for initialization
 	void Start () {
 		allPitons = GameObject.FindGameObjectsWithTag("Piton");	
@@ -29,6 +32,10 @@ public class throwhook : MonoBehaviour {
 			HookThrow();
 		} else if (ropeActive == false && allPitons.Length > 0) {
 			HookThrow();
+		}
+
+		if (Input.GetKeyDown ("i")) {
+			Respawn();
 		}
 
 
@@ -68,6 +75,19 @@ public class throwhook : MonoBehaviour {
 			curHook.GetComponent<RopeScript>().minimumDistance = nearestPitonScript.minimumDistance;
 
 			ropeActive = true;
+
+			lastSavePosition = nearestPiton.transform.position;
 		}
+	}
+
+	public void Respawn() {
+		// play death animation
+	
+		Destroy(curHook);
+		ropeActive = false;
+		Player.transform.position = lastSavePosition;
+		HookThrow();
+
+
 	}
 }

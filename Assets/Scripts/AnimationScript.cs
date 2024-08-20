@@ -30,16 +30,6 @@ public class AnimationScript : MonoBehaviour
         anim.SetFloat("HorizontalAxis", x);
         anim.SetFloat("VerticalAxis", y);
         anim.SetFloat("VerticalVelocity", yVel);
-
-        if ((x == 0f) && (y == 0f) && (!Input.GetKeyDown(KeyCode.Mouse0)))
-        {
-            float currTime = anim.GetFloat("idleTimer");
-            anim.SetFloat("idleTimer", currTime + Time.deltaTime);
-        }
-        else
-        {
-            anim.SetFloat("idleTimer", 0f);
-        }
     }
 
     public void SetTrigger(string trigger)

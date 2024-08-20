@@ -20,7 +20,9 @@ public class killZone : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Player") {
             //Debug.Log("AAAAAAA");
-            SceneManager.LoadScene("SampleScene");
+            //SceneManager.LoadScene("SampleScene");
+            GameObject playerVisual = collision.gameObject.GetComponent<PlayerMovement>().playerFX.gameObject;
+            playerVisual.GetComponent<Animator>().SetBool("isDead", true);;
         }
     }
 }
