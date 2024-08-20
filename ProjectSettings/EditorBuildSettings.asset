@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 701f2da0bb0508947992fbb78085fedd
+  - enabled: 1
+    path: Assets/Scenes/Climb Scene.unity
+    guid: 4bc59d78096fa144cb894dd3ff0b169e
   m_configObjects: {}
