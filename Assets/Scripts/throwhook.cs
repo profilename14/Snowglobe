@@ -86,6 +86,9 @@ public class throwhook : MonoBehaviour {
 		Destroy(curHook);
 		ropeActive = false;
 		Player.transform.position = lastSavePosition;
+		Vector3 displacerVector = lastSavePosition;
+		Player.transform.position += displacerVector.normalized * 0.1f;
+
 		HookThrow();
 
 
