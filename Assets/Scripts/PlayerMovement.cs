@@ -3,9 +3,6 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-
-    [Space]
     [Header("Stats")]
     public float speed = 8f;
     public float jumpForce = 16f;
@@ -77,8 +74,6 @@ public class PlayerMovement : MonoBehaviour
         // Take in input data and adjust it based on the player's local space
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
         Vector2 localMoveDirection = transform.TransformDirection(moveInput);
-
-        
 
         // Calculate target velocity based on input and speed
         Vector2 targetVelocity = localMoveDirection * speed;
